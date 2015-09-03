@@ -1,6 +1,8 @@
 package consistent_trees
 
 /*
+#cgo CFLAGS: -m64 -D_LARGEFILE64_SOURCE -D_FILE_OFFSET_BITS=64 -O3 -std=c99
+#cgo LDFLAGS: -lm
 #include <stdlib.h>
 #include "read_tree.h"
 */
