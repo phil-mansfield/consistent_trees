@@ -5,13 +5,13 @@ PROFFLAGS = -lm -g -pg -O2 -std=c99
 CC = gcc
 
 all:
-	@make reg EXTRA_FLAGS="$(OFLAGS)"
+	make reg EXTRA_FLAGS="$(OFLAGS)"
 
 debug:
-	@make reg EXTRA_FLAGS="$(DEBUGFLAGS)"
+	make reg EXTRA_FLAGS="$(DEBUGFLAGS)"
 
 prof:
-	@make reg EXTRA_FLAGS="$(PROFFLAGS)"
+	make reg EXTRA_FLAGS="$(PROFFLAGS)"
 
 
 reg:
