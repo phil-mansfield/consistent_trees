@@ -101,7 +101,7 @@ func (h HaloIndexKey) Index() int { return int(h.ptr.index) }
 // HaloList Getters
 
 func (h HaloList) Halos(idx int) Halo {
-	if idx < h.NumHalos() {
+	if idx >= h.NumHalos() {
 		panic(fmt.Sprintf(
 			"Index %d out of bounds for array of length %d", idx, h.NumHalos(),
 		))
