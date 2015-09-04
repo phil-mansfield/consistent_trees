@@ -1,6 +1,7 @@
 package consistent_trees
 
 /*
+#include <stdlib.h>
 #include "read_tree.h"
 */
 import "C"
@@ -48,13 +49,21 @@ func (h Halo) SnapNum() int { return int(h.ptr.snap_num) }
 
 func (h Halo) Desc() Halo { return Halo{ h.ptr.desc } }
 
-func (h Halo) Parent() Halo { return Halo{ h.ptr.parent } }
+func (h Halo) Parent() (Halo, bool) {
+	return Halo{ h.ptr.parent }, h.ptr.parent != (*C.struct_halo)(nil)
+}
 
-func (h Halo) UParent() Halo { return Halo{ h.ptr.uparent } }
+func (h Halo) UParent() (Halo, bool) {
+	return Halo{ h.ptr.uparent }, h.ptr.uparent != (*C.struct_halo)(nil)
+}
 
-func (h Halo) Prog() Halo { return Halo{ h.ptr.prog } }
+func (h Halo) Prog() (Halo, bool) {
+	return Halo{ h.ptr.prog }, h.ptr.prog != (*C.struct_halo)(nil)
+}
 
-func (h Halo) NextCoprog() Halo { return Halo{ h.ptr.next_coprog } }
+func (h Halo) NextCoprog() (Halo, bool) {
+	return Halo{ h.ptr.next_coprog }, h.ptr.next_coprog != (*C.struct_halo)(nil)
+}
 
 func (h Halo) MVir() float64 { return float64(h.ptr.mvir) }
 
