@@ -30,6 +30,10 @@ func LookupScale(scale float64) (HaloList, bool) {
 	return hl, hl.ptr != ((*C.struct_halo_list)(nil))
 }
 
+func LookupIndex(scale float64) int {
+	return int(C.lookup_index(C.float(scale)))
+}
+
 func FindClosestScale(scale float64) (HaloList, bool) {
 	hl := HaloList{ C.find_closest_scale(C.float(scale)) }
 	return hl, hl.ptr != ((*C.struct_halo_list)(nil))

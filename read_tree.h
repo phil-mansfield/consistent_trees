@@ -42,6 +42,7 @@ extern struct halo_list all_halos;
 
 struct halo *lookup_halo_in_list(struct halo_list *hl, int64_t id);
 struct halo_list *lookup_scale(float scale);
+int64_t lookup_index(float scale);
 struct halo_list *find_closest_scale(float scale);
 void read_tree(char *filename);
 void delete_tree();

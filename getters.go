@@ -11,6 +11,11 @@ import (
 	"unsafe"
 )
 
+
+const (
+	scaleFactorMul = 100000
+)
+
 // Halo Getters
 
 func (h Halo) Scale() float64 { return float64(h.ptr.scale) }
@@ -153,7 +158,7 @@ func (h HaloTree) HaloLists(idx int) HaloList {
 func (h HaloTree) NumLists() int { return int(h.ptr.num_lists) }
 
 func (h HaloTree) ScaleFactorConv(idx int) int {
-	if idx >= h.NumLists() {
+	if idx > scaleFactorMul {
 		panic(fmt.Sprintf(
 			"Index %d out of bounds for array of length %d", idx, h.NumLists(),
 		))

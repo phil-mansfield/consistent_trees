@@ -67,6 +67,13 @@ struct halo_list *lookup_scale(float scale) {
   return &(halo_tree.halo_lists[index]);
 }
 
+int64_t lookup_index(float scale) {
+  int64_t index = scale*SCALE_FACTOR_MUL;
+  if (index < 0) return 0;
+  if (index>=halo_tree.num_scales) return 0;
+  return halo_tree.scale_factor_conv[index];
+}
+
 struct halo_list *find_closest_scale(float scale) {
   int64_t index = scale*SCALE_FACTOR_MUL;
   int64_t i=0, j=0;
