@@ -52,7 +52,9 @@ func (h Halo) TidalID() int { return int(h.ptr.tidal_id) }
 
 func (h Halo) SnapNum() int { return int(h.ptr.snap_num) }
 
-func (h Halo) Desc() Halo { return Halo{ h.ptr.desc } }
+func (h Halo) Desc() (Halo, bool) {
+	return Halo{ h.ptr.desc }, h.ptr.desc != (*C.struct_halo)(nil)
+}
 
 func (h Halo) Parent() (Halo, bool) {
 	return Halo{ h.ptr.parent }, h.ptr.parent != (*C.struct_halo)(nil)
