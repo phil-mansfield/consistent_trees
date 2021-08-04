@@ -85,7 +85,7 @@ struct halo_list *find_closest_scale(float scale) {
   while (index+j >= 0 && halo_tree.scale_factor_conv[index+j]<0) j--;
   if (index+i < halo_tree.num_scales) {
     index += i;
-    if (index-i+j >= 0 && (fabs(j) < fabs(i))) index += j-i;
+    if (index-i+j >= 0 && (llabs(j) < llabs(i))) index += j-i;
   } else if (index+j>=0) index += j;
   index = halo_tree.scale_factor_conv[index];
   return &(halo_tree.halo_lists[index]);
